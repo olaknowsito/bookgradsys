@@ -1,0 +1,98 @@
+html, body {
+	font-family: 'Play', sans-serif;
+	height: 100%;
+  	margin: 0;
+
+}
+
+.wrapper {
+  min-height: 100%;
+
+  /* Equal to height of footer */
+  /* But also accounting for potential margin-bottom of last child */
+  margin-bottom: -50px;
+}
+.footer,
+.push {
+  height: 50px;
+}
+
+.footer {
+	background-color: #00000066 ;
+}
+
+.nav_css {
+  background-color: #00000066  !important;
+}
+
+/* .nav_css:hover {
+  background-color: #b29758 !important;
+} */
+
+
+.btn_add {
+  color: #1d2124 !important;
+  background-color: white !important;
+  border-color: #dee1e4 !important;
+}
+
+.btn_add {
+  background-color: #b29758 !important;
+}
+/* 
+.hover_a_nav:hover {
+  color: #F1C901 !important;
+} */
+
+.img_card_custom {
+  margin: 5px;
+}
+
+
+.info_card {
+  font-size: 12px;
+  color: #b29758 !important;
+
+}
+
+.card_user {
+  border-color: #000000  !important;
+  background: #ffffff;
+}
+
+.quarter,
+.quarter_overall {
+  cursor: pointer;
+}
+
+.ch_custom {
+  background: #b29758 !important;
+}
+
+.btn-gold {
+  background-color: #b29758 !important;
+  color: white !important;
+}
+
+
+.edit_user {
+  cursor: pointer;
+
+}
+
+.del_user {
+  position: absolute;
+  left: 130px;
+  cursor: pointer;
+
+}
+
+
+
+
+
+
+
+
+
+
