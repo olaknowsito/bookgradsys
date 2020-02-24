@@ -17,5 +17,10 @@
             $query = mysqli_query($this->con, "INSERT INTO grade_records (user_id, qr_id, grade, grade_category) VALUES ('$user_id', '$quarter_id', '$grade', '$grade_category')");
 			return mysqli_insert_id($this->con);
 		}
+
+		public function delGrade($quarter_id) {
+            $query = mysqli_query($this->con, "DELETE FROM grade_records WHERE qr_id='$quarter_id'");
+			return;
+		}
     }
 ?>

@@ -60,9 +60,8 @@
 							}
 
 							if(isset($_SESSION["success_compute"])){
-								
 								?>
-									<div class="alert alert-success" role="alert">
+									<div class="alert alert-info" role="alert">
 										Averages : <br>
 										<?php 
 											$count = 0;
@@ -71,10 +70,17 @@
 											}
 										?>
 									</div>
-
 								<?php
-								
 								unset($_SESSION["success_compute"]);
+							}
+							
+							if(isset($_SESSION["success_update"])){
+								?>
+									<div class="alert alert-warning" role="warning">
+										<?php echo $_SESSION["success_update"]; ?>
+									</div>
+								<?php
+								unset($_SESSION["success_update"]);
 							}
 						?>
 					</div>

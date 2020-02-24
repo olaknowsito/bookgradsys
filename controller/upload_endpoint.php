@@ -285,16 +285,58 @@
 
     }
 
+    $user_details = [];
+    $update_count = 0;
+    foreach ($records_tobeupload as $file_records){
+        $name = $file_records['name'];
+        if (empty($user_details)){
+            if ($file_records['last_grade_cat'] == 'H'){
+                $data = array(
+                    'name' => $file_records['name'],
+                    'quarter_num' => $file_records['quarter_num'],
+                    'year' => $file_records['year'],
+                );
+            }
+            if ($file_records['last_grade_cat'] == 'T'){
+                $data = array(
+                    'name' => $file_records['name'],
+                    'quarter_num' => $file_records['quarter_num'],
+                    'year' => $file_records['year'],
+                );
+            }
+            $user_details[$name] = $data;
+        } else {
+            if(! array_key_exists($name, $user_details)){
+                if ($file_records['last_grade_cat'] == 'H'){
+                    $data = array(
+                        'name' => $file_records['name'],
+                        'quarter_num' => $file_records['quarter_num'],
+                        'year' => $file_records['year'],
+                    );
+                }
+                if ($file_records['last_grade_cat'] == 'T'){
+                    $data = array(
+                        'name' => $file_records['name'],
+                        'quarter_num' => $file_records['quarter_num'],
+                        'year' => $file_records['year'],
+                    );
+                }
+                $user_details[$name] = $data;
+            } 
+        }
+    }
+
     // if name is in array and if quarter exist, add grade only
     // if name is in array and if quarter not exist, add grade and add quarter. 
     // if name is not in array and if quarter not exist, add quarter and add grade. then array push
     // if name is not in array and if quarter exist, return error
+    $user_count = 0;
     foreach($records_tobeupload as $data){
         //  if not, create the user and use the id as the ref to create graades_records
         if ($users->isUserExist($data['name']) == 0){
             // create user and get user id
             $user_id = $users->addUser($data['name']);
-            
+            $user_count++;  
             if ( in_array($data['name'], $uploaded_names) ){
                 $q_exist = $quarter_records->isQuarterExist($user_id, $data['quarter_num'], $data['year']);
                 if ($q_exist == 0){
@@ -343,7 +385,7 @@
     }
 
  
-    $_SESSION["success"] = 'Successfully Added!';
+    $_SESSION["success"] = count($user_details) . ' Users Successfully Added and recorded';
     header('location: ../views/user.php');
 
     // 1 time check only for 1 upload, is't in array ? if not, check if exist then push array, if yes skip checking quarter exist

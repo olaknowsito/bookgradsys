@@ -22,5 +22,15 @@
             $query = mysqli_query($this->con, "INSERT INTO quarter_records (user_id, year, quarter) VALUES ('$user_id', '$year', '$quarter')");
             return mysqli_insert_id($this->con);
 		}
+
+		public function delQuarter($user_id, $quarter_num, $year) {
+            $query = mysqli_query($this->con, "DELETE FROM `quarter_records` WHERE user_id='$user_id' AND quarter = '$quarter_num' AND year = '$year'");
+            return;
+		}
+		public function getQuarterId($user_id, $quarter_num, $year) {
+			$query = mysqli_query($this->con, "SELECT id FROM `quarter_records` WHERE user_id='$user_id' AND quarter = '$quarter_num' AND year = '$year'");
+			$row = mysqli_fetch_array($query);
+            return $row['id'];
+		}
     }
 ?>
