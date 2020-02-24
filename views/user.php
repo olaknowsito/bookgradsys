@@ -119,7 +119,7 @@
 												?>
 												<div class="card-body">
 													<p style="margin-top: -18px; margin-left:7px;"><strong><?php echo $student['full_name'] ?></strong></p>
-													<h6 class="info_card text-center"><em>Quarter Grades:</em></h6>
+													<h6 class="info_card text-center"><em>Quarter Grades:</em> <br><em style="font-size: 6px">(Tap to view)</em></h6>
 													<div class="row text-center">
 														<div class="col-lg-12 mx-0">
 															<img class="quarter" data-toggle="tooltip" title="Tap to view Quarter 1 Grades" data-quarter='1' data-id="<?php echo $student['id'] ?>" src="../assets/img/icons/cal1.png" height="30" width="30" alt=""> 
