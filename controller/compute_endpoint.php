@@ -10,6 +10,13 @@
     
 
     session_start();
+
+    if($imageFileType != 'txt') {
+        $_SESSION["error"] = "file is not supported";
+        header('location: ../views/user.php');
+        exit;
+    }
+    
     $target_file = basename($_FILES["fileToUpload"]["name"]);
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_DIRNAME));
 

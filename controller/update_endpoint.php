@@ -3,10 +3,20 @@
     include('../model/Classes/User.php');
     include('../model/Classes/GradeRecord.php');
     include('../model/Classes/QuarterRecord.php');
+
 	$users = new User();
 	$grade_records = new GradeRecord();
     $quarter_records = new QuarterRecord();
+
     session_start();
+
+    
+    if($imageFileType != 'txt') {
+        $_SESSION["error"] = "file is not supported";
+        header('location: ../views/user.php');
+        exit;
+    }
+
     $target_file = basename($_FILES["fileToUpload"]["name"]);
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_DIRNAME));
     $file = fopen($_FILES["fileToUpload"]["tmp_name"], "r");
@@ -295,7 +305,7 @@
             }
         } 
     }
-    
+
     $_SESSION["success_update"] = $update_count . ' User\'s record update success and ' . (count($user_details) - $update_count) . ' Users newly added' ;
     header('location: ../views/user.php');
 ?>
