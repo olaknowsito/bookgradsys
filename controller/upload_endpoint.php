@@ -11,13 +11,14 @@
 
     session_start();
 
+    $target_file = basename($_FILES["fileToUpload"]["name"]);
+    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_DIRNAME));
+
     if($imageFileType != 'txt') {
         $_SESSION["error"] = "file is not supported";
         header('location: ../views/user.php');
         exit;
     }
-    $target_file = basename($_FILES["fileToUpload"]["name"]);
-    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_DIRNAME));
 
     $file = fopen($_FILES["fileToUpload"]["tmp_name"], "r");
     $content =  fread($file,filesize($_FILES["fileToUpload"]["tmp_name"]));
