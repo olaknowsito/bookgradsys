@@ -53,7 +53,7 @@
 							if(isset($_SESSION["success"])){
 								?>
 									<div class="alert alert-success" role="alert">
-										Error : <?php echo $_SESSION["success"]; ?>
+										<?php echo $_SESSION["success"]; ?>
 									</div>
 								<?php
 								unset($_SESSION["success"]);
@@ -73,7 +73,7 @@
 								<?php
 								unset($_SESSION["success_compute"]);
 							}
-							
+
 							if(isset($_SESSION["success_update"])){
 								?>
 									<div class="alert alert-warning" role="warning">
